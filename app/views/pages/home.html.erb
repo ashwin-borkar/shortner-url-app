@@ -1,2 +1,6 @@
 <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% client = Bitly::API::Client.new(token: ENV['BITLY_API']) %>
+
+<% bitlink = client.shorten(long_url: "https://www.youtube.com") %>
+
+<%= bitlink.link %>
