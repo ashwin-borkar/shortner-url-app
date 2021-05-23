@@ -1,6 +1,16 @@
 <h1>Pages#home</h1>
-<% client = Bitly::API::Client.new(token: ENV['BITLY_API']) %>
 
-<% bitlink = client.shorten(long_url: "https://www.youtube.com") %>
+<%= simple_form_for @shortlink, remote: true do |f| %>
+  <div class="d-flex align-items-center justify-content-center m-3">
+    <div class="form-title-h2">Enter the url</div>
+  </div>
+  <%= f.input :original, placeholder: "URL" , label: false %>
+  <%= f.button :submit, 'Create Shortlink',  class: "btn btn-primary" %>
+<% end %>
+<ul>
+	<% @shortlinks.each do |link| %>
+		<li><%= link.url  %> - <%= link.original  %></li>
+	<% end %>
+</ul>
 
-<%= bitlink.link %>
+	
