@@ -12,5 +12,6 @@
 		<li><%= link.url  %> - <%= link.original  %></li>
 	<% end %>
 </ul>
-
-	
+<% if user_signed_in? %>
+	<%= link_to 'logout', destroy_user_session_path, :method => :delete %>
+<% end %>
