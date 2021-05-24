@@ -5,8 +5,7 @@ class ShortlinksController < ApplicationController
 	end
 
 	def create
-		client = Bitly::API::Client.new(token: ENV['BITLY_API'])
-		bitlink = client.shorten(long_url: shortlink_params[:original])
+		bitlink = helpers.shorten_link(shortlink_params[:original])
 		@shortlink = Shortlink.new(original: shortlink_params[:original], url: bitlink.link)
 		@shortlink.user = current_user
 		if @shortlink.save
