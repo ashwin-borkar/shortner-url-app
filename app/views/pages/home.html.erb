@@ -7,22 +7,26 @@
 			<%= f.button :submit, 'Create link', id: "button"%>
 		</div>
 	<% end %>
-	<ul>
-		<% @shortlinks.each do |link| %>
-			<div class="links">
-				<div class="d-flex">
-					<div class="bitlink">
-						<p>Shortened Link: <a href="<%= link.url %>"><%= link.url[8,link.url.length-8]%></a></p>
+	<% if @shortlinks.length > 0 %>
+		<ul>
+			<% @shortlinks.each do |link| %>
+				<div class="links">
+					<div class="d-flex">
+						<div class="bitlink">
+							<p>Shortened Link: <a href="<%= link.url %>"><%= link.url[8,link.url.length-8]%></a></p>
+						</div>
+						<div class="clicks">
+							<p>Times Clicked: <%= @helpers.clicks(link.url) %></p>
+						</div>
 					</div>
-					<div class="clicks">
-						<p>Times Clicked: <%= @helpers.clicks(link.url) %></p>
+					<div class="original">
+						<p>Original Link: <%= link.original  %></p>	
 					</div>
 				</div>
-				<div class="original">
-					<p>Original Link: <%= link.original  %></p>	
-				</div>
-			</div>
-		<% end %>
-	</ul>
+			<% end %>
+		</ul>
+	<% else %>
+		<h2 class="message" >You currently have no links created</h2>
+	<% end %>
 </div>
 
