@@ -1,19 +1,28 @@
-<h1>Pages#home</h1>
-
-<%= simple_form_for @shortlink, remote: true do |f| %>
-  <div class="d-flex align-items-center justify-content-center m-3">
-    <div class="form-title-h2">Enter the url</div>
-  </div>
-  <%= f.input :original, placeholder: "URL" , label: false %>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <%= f.button :submit, 'Create Shortlink',  class: "btn btn-primary" %>
-<% end %>
-<ul>
-	<% @shortlinks.each do |link| %>
-		<li><%= link.url  %> - <%= link.original  %> - <%= @helpers.clicks(link.url) %></li>
+<div class="home-container">
+	<h1 class="text-center">Links</h1>
+	<%= simple_form_for @shortlink, remote: true do |f| %>
+		<div class="form">
+			<%= f.input :original, placeholder: "Enter link to shorten", :input_html => { :size => 60, :style => "margin-right: 2px; border: 1px solid #757575 ; height: 38px; border-radius: 8px 0 0 8px; padding-left: 8px;" },  label: false, id: "input"%>
+			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+			<%= f.button :submit, 'Create link', id: "button"%>
+		</div>
 	<% end %>
-</ul>
-<% if user_signed_in? %>
-	<%= button_to 'logout', destroy_user_session_path, method: :delete%>
-<% end %>
+	<ul>
+		<% @shortlinks.each do |link| %>
+			<div class="links">
+				<div class="d-flex">
+					<div class="bitlink">
+						<p>Shortened Link: <a href="<%= link.url %>"><%= link.url[8,link.url.length-8]%></a></p>
+					</div>
+					<div class="clicks">
+						<p>Times Clicked: <%= @helpers.clicks(link.url) %></p>
+					</div>
+				</div>
+				<div class="original">
+					<p>Original Link: <%= link.original  %></p>	
+				</div>
+			</div>
+		<% end %>
+	</ul>
+</div>
 

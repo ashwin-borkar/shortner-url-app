@@ -11,6 +11,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="100vh main">
+      <%= render partial: "partials/header" %>
+      <%= yield %>
+    </div>
+    <%= render partial: "partials/footer" %>
+    
   </body>
 </html>
