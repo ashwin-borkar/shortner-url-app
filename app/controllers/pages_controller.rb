@@ -3,6 +3,6 @@ class PagesController < ApplicationController
   	@user = current_user
   	@shortlink = Shortlink.new
   	@shortlinks = current_user.shortlinks
-  	@clicks = helpers.clicks(@shortlinks.first.url)
+  	@helpers = helpers
   end
 end

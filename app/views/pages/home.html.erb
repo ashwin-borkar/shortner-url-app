@@ -9,11 +9,10 @@
 <% end %>
 <ul>
 	<% @shortlinks.each do |link| %>
-		<li><%= link.url  %> - <%= link.original  %></li>
+		<li><%= link.url  %> - <%= link.original  %> - <%= @helpers.clicks(link.url) %></li>
 	<% end %>
 </ul>
 <% if user_signed_in? %>
 	<%= link_to 'logout', destroy_user_session_path, :method => :delete %>
 <% end %>
 
-<%= @clicks %>
