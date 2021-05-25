@@ -26,7 +26,6 @@ gem 'devise'
 # gem 'image_processing', '~> 1.2'
 gem 'bitly'
 gem 'simple_form'
-gem 'bootstrap', '~> 5.0.1'
 gem 'httparty', '~> 0.13.7'
 gem 'json'
 # Reduces boot times through caching; required in config/boot.rb
