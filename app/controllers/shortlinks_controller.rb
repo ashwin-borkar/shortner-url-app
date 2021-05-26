@@ -5,13 +5,17 @@ class ShortlinksController < ApplicationController
 	end
 
 	def create
-		bitlink = helpers.shorten_link(shortlink_params[:original])
-		@shortlink = Shortlink.new(original: shortlink_params[:original], url: bitlink.link)
-		@shortlink.user = current_user
-		if @shortlink.save
-			redirect_to root_path
+		if helpers.shorten_link(shortlink_params[:original])
+			bitlink = helpers.shorten_link(shortlink_params[:original])
+			@shortlink = Shortlink.new(original: shortlink_params[:original], url: bitlink.link)
+			@shortlink.user = current_user
+			if @shortlink.save
+				redirect_to root_path
+			else
+				redirect_to root_path 
+			end
 		else
-			redirect_to root_path 
+			flash[notice] = "Please enter valid URL"
 		end
 	end
 

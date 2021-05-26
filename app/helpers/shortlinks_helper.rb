@@ -2,7 +2,11 @@ module ShortlinksHelper
 
 	def shorten_link(url)
 		@client = Bitly::API::Client.new(token: ENV['BITLY_API'])
-		@bitlink = @client.shorten(long_url: url)
+		begin
+			@client.shorten(long_url: url)
+		rescue
+			false
+		end
 	end
 
 	def clicks(link)
