@@ -12,10 +12,10 @@ class ShortlinksController < ApplicationController
 			if @shortlink.save
 				redirect_to root_path
 			else
-				redirect_to root_path 
+				redirect_to root_path, notice: "Unable to create shortened link, you may have already created this link"
 			end
 		else
-			flash[notice] = "Please enter valid URL"
+			flash.alert = "Please enter valid URL"
 		end
 	end
 
