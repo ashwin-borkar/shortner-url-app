@@ -27,7 +27,6 @@ gem 'devise'
 gem 'bitly'
 gem 'simple_form'
 gem 'httparty', '~> 0.13.7'
-gem 'json'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
