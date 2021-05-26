@@ -11,11 +11,12 @@
   </head>
 
   <body>
-    <div class="vh-100 main">
+    <div class="main">
+      <div class="text-center"><p class="notice alert"><%= notice %><%= alert %></p></div>
       <%= render partial: "partials/header" %>
       <%= yield %>
     </div>
-    <%= render partial: "partials/footer" %>
     
+    <%= render partial: "partials/footer" %>
   </body>
 </html>
