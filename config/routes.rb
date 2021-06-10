@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :shortlinks, only: [:new, :create]
-
+  get ':url', to: 'shortlinks#redirect'
   get '/404', to: "errors#not_found"
   get '/422', to: "errors#unacceptable"
   get '/500', to: "errors#internal_error"

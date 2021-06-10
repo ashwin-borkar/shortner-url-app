@@ -14,10 +14,10 @@
 				<div class="links">
 					<div class="d-flex">
 						<div class="bitlink">
-							<p>Shortened Link: <a href="<%= link.url %>"><%= link.url[8,link.url.length-8]%></a></p>
+							<p>Shortened Link: <a href="<%= link.url %>"><%= link.url%></a></p>
 						</div>
 						<div class="clicks">
-							<p>Times Clicked: <%= @helpers.clicks(link.url) %></p>
+							<p>Times clicked: <%= link.clicks %></p>
 						</div>
 					</div>
 					<div class="original">
