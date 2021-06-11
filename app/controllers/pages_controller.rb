@@ -3,6 +3,5 @@ class PagesController < ApplicationController
   	@user = current_user
   	@shortlink = Shortlink.new
   	@shortlinks = current_user.shortlinks.order('created_at DESC')
-  	@helpers = helpers
   end
 end

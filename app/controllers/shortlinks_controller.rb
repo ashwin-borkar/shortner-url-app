@@ -5,10 +5,10 @@ class ShortlinksController < ApplicationController
 	end
 
 	def create
-		@shortlink = Shortlink.new(original: shortlink_params[:original], url: SecureRandom.urlsafe_base64(6))
+		@shortlink = Shortlink.new(original: shortlink_params[:original])
 		@shortlink.user = current_user
 		if @shortlink.save
-			redirect_to root_path
+			redirect_to root_path, notice: "Successfully created shortened link"
 		else
 			redirect_to root_path, notice: "Unable to create shortened link, you may have already created this link"
 		end
