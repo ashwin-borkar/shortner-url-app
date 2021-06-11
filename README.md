@@ -1,6 +1,6 @@
 # URL-Shortener README
 
-URL-shortener is a Rails web app that generates shortened urls and tracks usage of the links using the Bitly API. It uses the Devise gem for authentication, it also uses HTTParty and simple_form gems.
+URL-shortener is a Rails web app that generates shortened urls and tracks usage of the links. It uses the Devise gem for authentication.
 
 ## Run Locally
 
@@ -16,8 +16,6 @@ bundle && yarn
 
 #Setup database
 rails db:Setup
-
-#You'll have to add a Bitly API key to the .env under BITLY_API
 
 #Serve
 rails s
