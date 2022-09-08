@@ -1,0 +1,8 @@
+<nav class="navbar">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1"><a href="/">URL-SHORTENER</a></span>
+    <% if user_signed_in? %>
+		<%= button_to "#{@user.email.split("@")[0]} logout", destroy_user_session_path, method: :delete, id: "button-logout" %>
+	<% end %>
+  </div>
+</nav>

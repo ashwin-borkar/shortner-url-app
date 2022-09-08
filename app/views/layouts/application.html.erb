@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UrlShortener</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="text-center"><p class="notice alert"><%= notice %><%= alert %></p></div>
+      <%= render partial: "partials/header" %>
+      <%= yield %>
+    </div>
+    
+    <%= render partial: "partials/footer" %>
+  </body>
+</html>

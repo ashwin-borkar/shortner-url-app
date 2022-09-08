@@ -1,0 +1,35 @@
+<div class="home-container">
+	<h1 class="text-center mt-3" style="color:#7e40bb;">Welcome to Short.com</h1>
+	<p class="text-center" style="color:#7e40bb;">use the full link starting with http:// or https://</p>
+	<%= simple_form_for @shortlink, remote: true do |f| %>
+		<div class="form">
+			<%= f.input :original, placeholder: "Enter link to shorten", :input_html => { :size => 60, :style => "margin-right: 2px; border: 1px solid #757575 ; height: 38px; border-radius: 8px 0 0 8px; padding-left: 8px;" },  label: false, id: "input"%>
+			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+			<%= f.button :submit, 'Create link', id: "button", :style => "color:white; background-color:blue; margin-top: -18px"%>
+		</div>
+	<% end %>
+	<% if @shortlinks.length > 0 %>
+		<ul>
+			<% @shortlinks.each do |link| %>
+				<div class="links">
+					<div class="d-flex">
+						<div class="bitlink">
+							<p style="color:#db405be8;"><span style="color:black;">Original Link:</span><%= link.original  %></p>
+						</div>
+						<div class="clicks">
+							<p style="color:red;">Times clicked: <%= link.clicks %></p>
+							<p style="color:red;">Country: <%= link.country %></p>
+						</div>
+						
+					</div>
+					<div class="original">
+						<p>Shortened Link: <a href="<%= link.url %>"><%= link.url%></a></p>	
+					</div>
+				</div>
+			<% end %>
+		</ul>
+	<% else %>
+		<h2 class="message" >You currently have no links created</h2>
+	<% end %>
+</div>
+
